@@ -1,0 +1,128 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+$spacing: 20px;
+//$link-color: #726243;
+$link-color: #2A0806;
+$background-color: white;
+
+@mixin background-box {
+  background: rgba($background-color, 0.5);
+  display: block;
+  padding: $spacing;
+  -webkit-box-shadow: 0 0 5px black;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 0px 1px 2px darken($link-color, 20%);
+  
+  &:hover {
+    //color: lighten($link-color, 30%);
+    color: #726243;
+  }
+}
+
+body {
+  background: url("../images/background.jpg") fixed;
+  font-size: 1em;
+  color: #333;
+  padding: $spacing;
+  line-height: 180%;
+  letter-spacing: 1px;
+  font-family: "Georgia";
+  
+/*  * {
+    border: 1px solid #333;
+    background: #ccc;
+  }*/
+  
+  $header_height: 120px;
+  
+  > header {
+    margin-bottom: $spacing;
+    height: $header_height;
+    
+    div.logo {
+      position: absolute;
+      top: $spacing * 1.5;
+      right: $spacing;
+      background: url("../images/logo.png") no-repeat;
+      height: $header_height;
+      width: 241px;
+    }
+        
+    h1 {
+      font-size: $header_height * 0.28;
+      padding-top: $header_height * 0.7;
+    }
+  }
+  
+  section.sidebar {
+    width: 20%;
+    top: $header_height + $spacing * 2;
+    right: 0px;
+    position: absolute;
+    //position: fixed;
+    
+    nav {
+      @include background-box;
+
+      menu {
+        list-style-type: none;
+        
+        li {
+          background: 0 6px url("../images/menu.png") no-repeat;
+          display: block;
+          padding-left: $spacing * 1.5;
+          margin-bottom: $spacing;
+          
+          menu {
+            li {
+              margin-top: $spacing / 2;
+              margin-bottom: 0;
+            }
+          }
+          
+          a {
+          }
+        }
+      }
+    }
+  }
+  
+  section.content {
+    width: 78%;
+    article {
+      @include background-box;
+      
+      h2 {
+        font-size: 1.7em;
+      }
+      
+      details {
+        font-size: 1.2em;
+        
+        p {
+          margin-top: $spacing;
+        }
+      }
+    }
+  }
+  
+  footer {
+    margin-top: $spacing;
+    
+    div.left {
+      position: absolute;
+    }
+    
+    div.right {
+      float: right;
+    }
+  }
+}
