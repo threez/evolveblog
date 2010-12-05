@@ -110,5 +110,17 @@ layout: nil
 }
 {% endhighlight %}
 
+Adding posts is easy. I just commit them in my local git repo and push the changes
+to the server where a post commit hook will compose the page. Therefore the remote
+repository can't be +bare+ and must have the current contents (that's why i am 
+reseting to the head after adding new content). If you are interested in my git 
+post receive hook, here it is:
+
+{% highlight bash %}
+cd ~/evolveblog.git/
+GIT_DIR=~/evolveblog.git/.git git reset --hard HEAD
+jekyll ../www/
+{% endhighlight %}
+
 So if there are new issues with Jekyll that i face while im blogging, i will tell you.
 But for now this is enough about my setup.
