@@ -110,5 +110,5 @@ layout: nil
 }
 {% endhighlight %}
 
-So if there are new issues with Jekyll i face while im blogging i will tell you.
+So if there are new issues with Jekyll that i face while im blogging, i will tell you.
 But for now this is enough about my setup.
