@@ -22,6 +22,7 @@ blog:
   language: en_EN
   keywords: ruby blog
   description: a blog from vincent landgraf
+  disqus: toevolve
 
 maruku:
   use_tex:    false
