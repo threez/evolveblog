@@ -1,6 +1,7 @@
 ---
 layout: rss
 title: the evolving blog
+description: a blog about technologie
 ---
 
 {% for post in site.posts %}
@@ -13,4 +14,3 @@ title: the evolving blog
   <pubDate>{{ post.date | date_to_xmlschema }}</pubDate>
 </item>
 {% endfor %}
-

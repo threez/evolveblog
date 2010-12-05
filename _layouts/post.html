@@ -8,18 +8,24 @@
   <body>
     {% include header.html %}
     {% include navigation.html %}
-    <section class="content">
-      <article>
-        <h2>{{ page.title }}</h2>
-        <details>
+    <div class="content">
+      <div class="article">
+        <h1>{{ page.title }}</h1>
+        <div class="details">
           {{ content }}
-        </details>  
-        <em>Posted on {{ page.date | date_to_long_string }}.</em>
-      </article>
-      <a href="http://toevolve.org{{ page.url }}#disqus_thread">View Comments</a>
-      <div id="disqus_thread"></div>
-      <script type="text/javascript" src="http://disqus.com/forums/toevolve/embed.js"></script>
-    </section>
+        </div>
+        <div class="meta">
+          <em>Posted on {{ page.date | date_to_long_string }}.</em>
+        </div>
+        <div class="comments">
+          <a href="{{ site.blog.url }}{{ page.url }}#disqus_thread">
+            View Comments
+          </a>
+          <div id="disqus_thread"></div>
+        </div>
+      </div>
+    </div>
     {% include footer.html %}
+    <script type="text/javascript" src="http://disqus.com/forums/vilandgr/embed.js"></script>
   </body>
 </html>

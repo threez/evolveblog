@@ -1,6 +1,8 @@
 ---
-layout: default
+layout: page
 title: Projects
 ---
 
 # Projects
+
+...

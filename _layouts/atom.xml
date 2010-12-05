@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ page.title }}</title>
-  <link href="http://toevolve.org"/>
+  <link href="{{ site.blog.url }}"/>
   <updated>{{ site.time | date_to_xmlschema }}</updated>
-  <id>http://toevolve.org</id>
+  <id>{{ site.blog.url }}</id>
   <author>
-    <name>Vincent Landgaf</name>
-    <email>vilandgr+toevolve@googlemail.org</email>
+    <name>{{ site.blog.author }}</name>
+    <email>{{ site.blog.email }}</email>
   </author>
-
   {{ content }}
 </feed>

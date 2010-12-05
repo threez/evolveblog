@@ -2,18 +2,11 @@
 <rss version="2.0">
   <channel>
     <title>{{ page.title }}</title>
-    <link>http://toevolve.org</link>
-    <description>...</description>
-    <language>en_EN</language>
-    <copyright>Vincent Landgraf</copyright>
+    <link>{{ site.blog.url }}</link>
+    <description>{{ page.description }}</description>
+    <language>{{ site.blog.language }}</language>
+    <copyright>{{ site.blog.copyright }}</copyright>
     <pubDate>{{ site.time | date_to_xmlschema }}</pubDate>
-    <image>
-      <url>URL einer einzubindenden Grafik</url>
-      <title>Bildtitel</title>
-      <link>URL, mit der das Bild verknüpft ist</link>
-    </image>
-    
     {{content}}
-    
   </channel>
 </rss>
