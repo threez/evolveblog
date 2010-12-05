@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    {% include head.html %}
+  </head>
+  <body>
+    {% include header.html %}
+    {% include navigation.html %}
+    <section class="content">
+      <article>
+        <h2>{{ page.title }}</h2>
+        <details>
+          {{ content }}
+        </details>  
+        <em>Posted on {{ page.date | date_to_long_string }}.</em>
+      </article>
+      <a href="http://toevolve.org{{ page.url }}#disqus_thread">View Comments</a>
+      <div id="disqus_thread"></div>
+      <script type="text/javascript" src="http://disqus.com/forums/toevolve/embed.js"></script>
+    </section>
+    {% include footer.html %}
+  </body>
+</html>

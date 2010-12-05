@@ -1,0 +1,16 @@
+<section class="sidebar">
+  <nav>
+    <menu>
+      {% for post in site.posts limit:50000 %}
+      <li><a href="{{ post.url }}">{{ post.title }}</li>
+      {% endfor %}
+    </menu>
+  </nav>
+  <nav>
+    <menu>
+      <li><a href="/pages/projects.html">Projects</a></li>
+      <li><a href="/pages/about-me.html">About me</a></li>
+      <li><a href="/pages/impress.html">Impressum</a></li>
+    </menu>
+  </nav>
+</section>

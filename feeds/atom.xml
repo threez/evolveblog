@@ -1,0 +1,14 @@
+---
+layout: atom
+title: the evolving blog
+---
+
+{% for post in site.posts %}
+<item>
+  <title>{{ post.title }}</title>
+  <link href="http://toevolve.org{{ post.url }}" />
+  <id>http://toevolve.org{{ post.id }}</id>
+  <updated>{{ post.date | date_to_xmlschema }}</updated>
+  <content type="html">{{ post.content }}</content>
+</item>
+{% endfor %}
