@@ -17,7 +17,7 @@ git commit -a -m "changes from #{Time.now}"
 git push
 {% endhighlight %}
 
-After things are uploaded a post commit hook will compose the page on the
+After things are uploaded a [post receive](http://www.kernel.org/pub/software/scm/git/docs/githooks.html#post-receive) hook will compose the page on the
 server (assuming that ruby and [redcloth](http://redcloth.org/) are installed).
 
 There where actually some erb templates for things like for loops around some
