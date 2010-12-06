@@ -7,19 +7,19 @@ tags: windows 7 ruby ansicon bat msysgit
 Last friday I tried how war would I come, to get a mac os like development
 environment in windows 7. Actually I got everything working, I have used the
 development package for [msysgit](http://code.google.com/p/msysgit/) (the hack pack).
-It delivers a good unix environment inclusive gcc and g++.
+It delivers a good unix environment inclusive *gcc* and *g++*.
 
-Then I compiled ruby 1.9.2-p0. That was not a problem in this environment. But 
-I have to change all ruby/bin bat files to bash scripts to play fine with the bash.
+Then I compiled ruby *1.9.2-p0*. That was not a problem in this environment. But 
+I have to change all *ruby/bin* bat files to bash scripts to play fine with the bash.
 
 Next I wanted to have a different console and new fonts. For the console or
 terminal I choose [Console2](http://sourceforge.net/projects/console/)
-it is the best console for Windows I could find. Including tabs, clear type for
-fonts and many different layout functions. To setup the bash with +Console2+
-was very easy. You just have to remove the +start+ command in the +git-cmd.bat+
-that will be delivered in your msysgit installation.
+it is the best console for windows I could find. Including tabs, clear type for
+fonts and many different layout functions. To setup the bash with *Console2*
+was very easy. You just have to remove the +start+ command in the *git-cmd.bat*
+that will be delivered in your *msysgit* installation.
 
-Since I was using bash the +cls+ command was not working. I fixed this using:
+Since I was using bash the *cls* command was not working. I fixed this using:
 
 {% highlight bash %}
 alias clear="echo -en '\033[2J'"
@@ -28,7 +28,7 @@ alias clear="echo -en '\033[2J'"
 But therefor I needed ansi color support. Luckily I found a old project that 
 enables ansi colors and supports nearly every windows plattform I have heard of.
 It's called [ANSICON](http://adoxa.110mb.com/ansicon/index.html). They have
-recently moved to github. Just download the package and place the ansicon in
+recently moved to *github*. Just download the package and place the ansicon in
 yout path. Enabling the coloring is easy. Just add:
 
 {% highlight bat %}
@@ -39,10 +39,10 @@ to the script or current command line session. It will enable ansi colors for
 the parent process.
 
 After having added ansi colors to my bash I could add a colored terminal with
-git information. Therefor I included the +git-completion.bash+ bash file,
+git information. Therefor I included the *git-completion.bash* bash file,
 which is part of your source git distribution (contrib directory). It enables
 code completion for git commands and branches and is very handy to add a simple
-'current branch information' to the prompt. My +.bashrc+ is looking like this:
+'current branch information' to the prompt. My *.bashrc* is looking like this:
 
 {% highlight bash %}
 alias ls="ls --color"
@@ -68,4 +68,4 @@ bash
 {% endhighlight %}
 
 All in all, windows 7 isn't that bad in providing a working ruby & git environment.
-It may took some while to set it up, but if you have no other option it's worth it.
+It may took some time to set it up, but if you have no other option it's worth it.
