@@ -61,7 +61,7 @@ EventMachine.synchrony do
 end
 {% endhighlight %}
 
-But there are drawbacks.
+But there are drawbacks:
 
 - The lack of a good fiber & callcc implementations in some rubies and *MRI 1.8.7*,
   so that you can use this effectively only under *MRI 1.9.2-p0*
@@ -69,18 +69,13 @@ But there are drawbacks.
 - Some protocols may not be implemented for *EventMachine*
 
 The original [post](http://www.igvita.com/2010/03/22/untangling-evented-code-with-ruby-fibers/) 
-and a nice recorded by Gregg Pollack [talk](http://www.viddler.com/explore/GreggPollack/videos/40/) about that theme.
+and a nice recording of his [talk](http://www.viddler.com/explore/GreggPollack/videos/40/)by Gregg Pollack.
 
-<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
-        width="437" height="370" id="viddler_cfadc37f">
-  <param name="movie" value="http://www.viddler.com/player/cfadc37f/" />
-  <param name="allowScriptAccess" value="always" />
-  <param name="allowFullScreen" value="true" />
-  <embed src="http://www.viddler.com/player/cfadc37f/" 
-         width="437" height="370" type="application/x-shockwave-flash" 
-         allowScriptAccess="always" allowFullScreen="true" 
-         name="viddler_cfadc37f">
-  </embed>
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="545" height="451" id="viddler_cfadc37f">
+  <param name="movie" value="http://www.viddler.com/player/cfadc37f/">
+  <param name="allowScriptAccess" value="always">
+  <param name="allowFullScreen" value="true">
+  <embed src="http://www.viddler.com/player/cfadc37f/" width="545" height="451" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" name="viddler_cfadc37f">
 </object>
 
-I hope i can try out the solution soon to tell you the results.
+I hope I can try out the solution soon, to tell you the results.
