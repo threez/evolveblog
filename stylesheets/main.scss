@@ -57,6 +57,10 @@ body {
     @include shadow;
   }
   
+  object {
+    margin-top: $spacing / 2;
+  }
+  
 /*  * {
     border: 1px solid #333;
     background: #ccc;
@@ -111,8 +115,8 @@ body {
   div.content {
     margin-right: 300px;
     line-height: 180%;
-    letter-spacing: 1px;
-    font-family: "Georgia";
+    //letter-spacing: 1px;
+    font-family: "Georgia", Times, serif;
     
     div.article {
       @include background-box;
