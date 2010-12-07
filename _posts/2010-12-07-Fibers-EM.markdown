@@ -1,0 +1,86 @@
+---
+layout: post
+title: Fibers and EventMachine
+tags: fibers ruby event machine igrigorik
+---
+
+Currently I am working on a big frontend using *ruby* and *rails 3*. One
+of the main task for this frontend is to gather data from a middleware server
+and some databases. These databases are accessed using [DataMapper](http://datamapper.org/)
+and the middleware though a very efficient *REST/JSON* interface. To access
+the interface i currently us the [RestClient](https://github.com/archiloque/rest-client) gem.
+These libraries are really awesome. They make calling a REST interface or
+querying the database fun. Also there is a [MemCache](https://rubygems.org/gems/memcache-client)
+to save some aggregated responses form the database and middleware. The Database
+is a normal *MySQL 5* accessed using [do_mysql](http://rubydoc.info/gems/do_mysql/0.10.2/frames).
+
+Okay, that is the setting. Now each request on the ruby frontend will at least
+call once the memcache, then 2 times the middleware and in some cases the database.
+The calls are fast and the resultsets aren't that big that there is much of a problem.
+But there is room for improvement. Now the calles are ordered like this
+
+    | -> Memcache -> MiddleWare -> Middlware -> Database -> |
+    
+What i really want is something like this
+
+    | -> Database               -> |
+    | -> MemCache -> MiddleWare -> |
+    | -> MiddleWare             -> |
+    
+But i guess you know the Problem. The GIL and the non-blocking calls are against
+me. I am not able to easily move to the pattern described above.
+
+After a little research i found something very interesting. Ilya Grigorik had
+a very brilliant idea. He combined Fibers and EventMaschine to be able to
+do non-blocking *IO* in a very natural and easy way. *EventMaschine* has drivers 
+for all the protocols and drivers i mentioned.
+
+He says that Fibers are just lightweight threads that are under your control.
+The aren't scheduled through the normal *CompletlyUnfairScheduler* 
+(I call it like this, because i think *equal treatment is the greatest injustice*).
+You can use EventMaschine to pause your fibers after requesting the resources
+and wake them up using EventMaschine callbacks. That way you get this clean
+and simple linear programming. But best of all, you don't have to write it your
+selve.
+
+He has but together a gem that will manage all the details. It is called
+[synchrony](https://github.com/igrigorik/em-synchrony) here is how it works: 
+
+{% highlight ruby %}
+require "em-synchrony/em-http"
+EventMachine.synchrony do
+    multi = EventMachine::Synchrony::Multi.new
+    multi.add :a, EventMachine::HttpRequest.new("http://www.postrank.com").aget
+    multi.add :b, EventMachine::HttpRequest.new("http://www.postrank.com").apost
+    res = multi.perform
+
+    p "Look ma, no callbacks, and parallel HTTP requests!"
+    p res
+
+    EventMachine.stop
+end
+{% endhighlight %}
+
+But there are drawbacks.
+
+- The lack of a good fiber & callcc implementations in some rubies and *MRI 1.8.7*,
+  so that you can use this effectively only under *MRI 1.9.2-p0*
+- You have to have an event-loop around your code. This may or may not be easy
+- Some protocols may not be implemented for *EventMachine*
+
+The original [post](http://www.igvita.com/2010/03/22/untangling-evented-code-with-ruby-fibers/) 
+and a nice recorded by Gregg Pollack [talk](http://www.viddler.com/explore/GreggPollack/videos/40/) about that theme.
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+        width="437" height="370" id="viddler_cfadc37f">
+  <param name="movie" value="http://www.viddler.com/player/cfadc37f/" />
+  <param name="allowScriptAccess" value="always" />
+  <param name="allowFullScreen" value="true" />
+  <embed src="http://www.viddler.com/player/cfadc37f/" 
+         width="437" height="370" type="application/x-shockwave-flash" 
+         allowScriptAccess="always" allowFullScreen="true" 
+         name="viddler_cfadc37f">
+  </embed>
+</object>
+
+I hope i can try out the solution soon to tell you the results.
