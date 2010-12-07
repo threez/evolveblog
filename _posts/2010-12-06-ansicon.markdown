@@ -1,20 +1,20 @@
 ---
-layouts: post
+layout: post
 title: Windows 7
 tags: windows 7 ruby ansicon bat msysgit
 ---
 
-Last friday I tried how war would I come, to get a mac os like development
-environment in windows 7. Actually I got everything working, I have used the
+Last friday I tried how far would I come in getting a *Mac OS X* like development
+environment under *Windows 7*. Actually I got everything working, I have used the
 development package for [msysgit](http://code.google.com/p/msysgit/) (the hack pack).
 It delivers a good unix environment inclusive *gcc* and *g++*.
 
 Then I compiled ruby *1.9.2-p0*. That was not a problem in this environment. But 
-I have to change all *ruby/bin* bat files to bash scripts to play fine with the bash.
+I had to change all *ruby/bin* bat files to bash scripts to play fine with the bash.
 
 Next I wanted to have a different console and new fonts. For the console or
 terminal I choose [Console2](http://sourceforge.net/projects/console/)
-it is the best console for windows I could find. Including tabs, clear type for
+it is the best console for Windows I could find. Including tabs, clear type for
 fonts and many different layout functions. To setup the bash with *Console2*
 was very easy. You just have to remove the +start+ command in the *git-cmd.bat*
 that will be delivered in your *msysgit* installation.
@@ -67,5 +67,5 @@ ansicon -p
 bash
 {% endhighlight %}
 
-All in all, windows 7 isn't that bad in providing a working ruby & git environment.
+All in all, *Windows 7* isn't that bad in providing a working ruby & git environment.
 It may took some time to set it up, but if you have no other option it's worth it.
