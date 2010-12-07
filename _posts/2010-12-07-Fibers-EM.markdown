@@ -71,11 +71,16 @@ But there are drawbacks:
 The original [post](http://www.igvita.com/2010/03/22/untangling-evented-code-with-ruby-fibers/) 
 and a nice recording of his [talk](http://www.viddler.com/explore/GreggPollack/videos/40/)by Gregg Pollack.
 
-<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="545" height="451" id="viddler_cfadc37f">
-  <param name="movie" value="http://www.viddler.com/player/cfadc37f/">
-  <param name="allowScriptAccess" value="always">
-  <param name="allowFullScreen" value="true">
-  <embed src="http://www.viddler.com/player/cfadc37f/" width="545" height="451" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" name="viddler_cfadc37f">
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+        width="545" height="451" id="viddler_cfadc37f">
+  <param name="movie" value="http://www.viddler.com/player/cfadc37f/" />
+  <param name="allowScriptAccess" value="always" />
+  <param name="allowFullScreen" value="true" />
+  <embed src="http://www.viddler.com/player/cfadc37f/" 
+         width="545" height="451" type="application/x-shockwave-flash" 
+         allowScriptAccess="always" allowFullScreen="true" 
+         name="viddler_cfadc37f">
+  </embed>
 </object>
 
 I hope I can try out the solution soon, to tell you the results.
