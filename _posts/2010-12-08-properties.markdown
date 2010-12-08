@@ -70,7 +70,7 @@ pop = MailAccount.new("pop.example.com", :pop)
 {% endhighlight %}
 
 Next thing to do was, to handle the translation of values in the class. So that
-stings are converted to integer or symbols.
+stings are converted to integers or symbols.
 
 {% highlight ruby %}
 class MailAccount
