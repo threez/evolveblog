@@ -12,7 +12,7 @@ I further think that they should even equally weighted.
 When i say equally weighted i don't mean, that the code for testing and the 
 code for development has to be equal. I mean that the problem, its solution, 
 the functions and the quality requirements are on both sides of equal importance.
-Therefor they both should become the same time.
+Therefor they both should get the same time budget.
 
 If you are developing on a feature for one day you should test it at least one 
 day too. Testing more than that is not worth it, as far as my experience goes.
