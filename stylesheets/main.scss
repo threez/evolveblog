@@ -57,6 +57,13 @@ body {
     @include shadow;
   }
   
+  img {
+    @include shadow;
+    text-align: center;
+    display: block;
+    margin: $spacing / 2 auto;
+  }
+  
   object {
     margin-top: $spacing / 2;
   }
