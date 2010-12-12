@@ -1,0 +1,27 @@
+---
+layout: sitemap
+---
+<url>
+  <loc>{{ site.blog.url }}</loc>
+  <lastmod>{{ site.time | date: "%Y-%m-%d") }}</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>0.8</priority>
+</url>
+<url>
+  <loc>{{ site.blog.url }}/pages/projects.html</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>{{ site.blog.url }}/pages/about-me.html</loc>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>{{ site.blog.url }}/pages/impress.html</loc>
+  <changefreq>weekly</changefreq>
+</url>
+{% for post in site.posts limit:5 %}
+<url>
+  <loc>{{ site.blog.url }}{{ post.url }}</loc>
+  <lastmod>{{ post.date | date: "%Y-%m-%d") }}</lastmod>
+</url>
+{% endfor %}
