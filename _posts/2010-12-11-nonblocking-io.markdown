@@ -112,7 +112,7 @@ I also tried mongrel, but the results where so bad, that i did't mention them he
 
 I think if the clients are permanently connected the *EventMaschine* approach is much better, even if it is slower in high load situations. Just because one call handle thousands of users with a single box.
 
-You can find the full source and the results [here](https://github.com/threez/memcache-broker);
+You can find the full source and the results [here](https://github.com/threez/memcache-broker).
 
 These Post is inspired by the blog [ post](http://macournoyer.com/blog/2009/06/04/pusher-and-async-with-thin/) of the *Thin* creator and a talk from [Mike Perham](http://www.mikeperham.com/2010/01/27/scalable-ruby-processing-with-eventmachine/).
 
