@@ -19,8 +19,8 @@ So i decided to use my own. It's fairly simple to do. Just create a new **sitema
 According to the definition the last modified date has to be in the form of **year-month-day**. I didn't found a predefined formater in liquid for this. So i used the *date* formater like this.
 
     <url>
-      <loc>{{ "{% site.blog.url" }}%}{{ "{% post.url }}%} </loc>
-      <lastmod>{{ "{% post.date | date: "%Y-%m-%d" }}%}</lastmod>
+      <loc>{{ "{% site.blog.url" }}%}{{ "{% post.url " }}%} </loc>
+      <lastmod>{{ "{% post.date | date: '%Y-%m-%d' " }}%}</lastmod>
     </url>
     
 While i was writing this post i needed to escape the liquid templating. It isn't very simple but i found a solution [here](https://github.com/scottkf/tesoriere.com/blob/master/_posts/2010-08-25-liquid-code-in-a-liquid-template-with-jekyll.markdown).
