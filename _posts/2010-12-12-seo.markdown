@@ -1,0 +1,27 @@
+---
+layout: post
+title: Search Engine Optimization
+tags: seo sitemap robots google
+---
+
+I was wondering why google actually and all others search engines probably don't like my blog site. I searched on how to make the Site more Crawler compatible aside the normal *HTML* bug fixing.
+
+What i found was, that all majors like *google*, *bing*, and *yahoo* like to have [sitemap.xml](http://sitemap.org) file. The Sitemap xml describes, where the crawlers can find there content, when it was last edited and in what frequency they should come back.
+
+There are some plugins for *jekyll* that allow easy generation of these sitemaps (e.g. the one from [recursive design](http://recursive-design.com/projects/jekyll-plugins/)). What i don't like with this generators is:
+
+- They fail if you have generated pages aside from posts
+- You are not able to fine tune the urls (e.g. i want the index page to be crawled more often than any other page)
+- There are no additional information and the last modified is the ctime of your file
+
+So i decided to use my own. It's fairly simple to do. Just create a new **sitemap.xml** file with the *YAML Front Matter* and let jekyll do the rest.
+
+According to the definition the last modified date has to be in the form of **year-month-day**. I didn't found a predefined formater in liquid for this. So i used the *date* formater like this.
+
+    <url>
+      <loc>{{ "{% site.blog.url" }}%}{{ "{% post.url }}%} </loc>
+      <lastmod>{{ "{% post.date | date: "%Y-%m-%d" }}%}</lastmod>
+    </url>
+    
+While i was writing this post i needed to escape the liquid templating. It isn't very simple but i found a solution [here](https://github.com/scottkf/tesoriere.com/blob/master/_posts/2010-08-25-liquid-code-in-a-liquid-template-with-jekyll.markdown).
+
