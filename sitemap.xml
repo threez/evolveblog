@@ -3,7 +3,7 @@ layout: sitemap
 ---
 <url>
   <loc>{{ site.blog.url }}</loc>
-  <lastmod>{{ site.time | date: "%Y-%m-%d") }}</lastmod>
+  <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
   <changefreq>daily</changefreq>
   <priority>0.8</priority>
 </url>
@@ -22,6 +22,6 @@ layout: sitemap
 {% for post in site.posts limit:5 %}
 <url>
   <loc>{{ site.blog.url }}{{ post.url }}</loc>
-  <lastmod>{{ post.date | date: "%Y-%m-%d") }}</lastmod>
+  <lastmod>{{ post.date | date: "%Y-%m-%d" }}</lastmod>
 </url>
 {% endfor %}
