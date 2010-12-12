@@ -116,4 +116,4 @@ You can find the full source and the results [here](https://github.com/threez/me
 
 These Post is inspired by the blog [ post](http://macournoyer.com/blog/2009/06/04/pusher-and-async-with-thin/) of the *Thin* creator and a talk from [Mike Perham](http://www.mikeperham.com/2010/01/27/scalable-ruby-processing-with-eventmachine/).
 
-<iframe src="http://player.vimeo.com/video/10849958?portrait=0&color=ffffff" height="300" frameborder="0" />
+<iframe src="http://player.vimeo.com/video/10849958?portrait=0&color=ffffff"  height="300" frameborder="0">.</iframe>
