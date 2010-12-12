@@ -64,6 +64,13 @@ body {
     margin: $spacing / 2 auto;
   }
   
+  iframe {
+    margin-top: $spacing / 2;
+    width: 100%;
+    @include shadow;
+    display: block;
+  }
+  
   object {
     margin-top: $spacing / 2;
   }
