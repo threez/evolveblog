@@ -143,7 +143,7 @@ body {
     background: $content_background;
     font-family: "Georgia", Times, serif;
     display: block;
-    padding: $content_padding $content_padding 0 $content_padding;
+    padding: 0 $content_padding;
     
     div.article {      
       ul {
@@ -152,6 +152,7 @@ body {
       }
       
       h1 {
+        padding-top: $content_padding;
         font-size: 16pt;
       }
       
@@ -177,18 +178,21 @@ body {
       }
       
       div.meta {
-        text-align: right;
+        float: right;
+        padding-top: $spacing / 2;
+        font-size: 10pt;
       }
       
       div.comments {
-        border-top: 1px solid #796459;
+        padding-bottom: $content_padding;
+        border-bottom: 1px solid #796459;
       }
     }
   }
   
   div.footer {
     background: $content_background;
-    padding-top: $spacing;
+    padding-top: $content_padding;
     padding-left: $content_padding;
     padding-right: $content_padding;
     margin-left: $sidebar_width;
@@ -196,7 +200,6 @@ body {
     font-size: 10pt;
     
     div.powered {
-      border-top: 1px solid #796459;
     }
     
     div.copyright {

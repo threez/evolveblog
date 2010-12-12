@@ -10,17 +10,14 @@
     {% include navigation.html %}
     <div class="content">
       <div class="article">
+        <div class="meta">
+          <em>Posted on {{ page.date | date_to_long_string }}</em>
+        </div>
         <h1>{{ page.title }}</h1>
         <div class="details">
           {{ content }}
         </div>
-        <div class="meta">
-          <em>Posted on {{ page.date | date_to_long_string }}.</em>
-        </div>
         <div class="comments">
-          <a href="{{ site.blog.url }}{{ page.url }}#disqus_thread">
-            View Comments
-          </a>
           <div id="disqus_thread"></div>
         </div>
       </div>

@@ -5,12 +5,12 @@ title: evolve blog
 
 {% for post in site.posts limit:5 %}
 <div class="article">
+  <div class="meta">
+    <em>Posted on {{ post.date | date_to_long_string }}</em>
+  </div>
   <h1>{{ post.title }}</h1>
   <div class="details">
     {{ post.content }}
-  </div>
-  <div class="meta">
-    <em>Posted on {{ post.date | date_to_long_string }}.</em>
   </div>
   <div class="comments">
     <a href="{{ site.blog.url }}{{ post.url }}#disqus_thread">
