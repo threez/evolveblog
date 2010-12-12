@@ -55,6 +55,9 @@ body {
     background: $link-color;
     color: $background-color;
     @include shadow;
+    overflow-x: auto;
+    
+    code {}
   }
   
   img {
