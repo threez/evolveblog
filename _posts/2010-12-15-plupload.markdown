@@ -1,0 +1,91 @@
+---
+layout: post
+title: File Upload using Plupload
+tags: file upload mutliple plupload flash silverlight html
+---
+
+You may had the same issue in the past. If you want to enable the user to upload multiple files at once there was allways no good solution. Many people have used *Flash*, *Java-Applets* or other techniques to come around this issue. 
+
+Well at work i have currently the same issue. Uploading one file or multiple files to the server. At the moment i use the *"upload into frame"* method where one can upload the file into a *iframe* to omit leaving the form or web application. 
+
+This technique is very simple. It works on all browsers i know of. Just like this:
+
+{% highlight html %}
+<iframe id="file-upload-handler" name="file-upload-handler"
+ style="display: none; margin 0px; padding: 0px;"></iframe>
+<form enctype="multipart/form-data" action="/upload" method="post" target="file-upload-handler">
+  <input type="file" name="upload-1" />
+  <input type="file" name="upload-2" />
+  <input type="file" name="upload-n" />
+  <input type="submit" value="upload" />
+</form>
+{% endhighlight %}
+
+Be sure to also use the *name*, because that is, what is relevant for the *target* attribute. Als long as you have *html5* and / or enough input fields of type file you can upload as many files as you want. But you can't multi-select or drag and drop them. Also you have no indicator of the upload progress. And if you have upload limits (e.g. 10MB) that you have to check it on the server side. There are some workarounds (e.g. ajax poll for upload progress) to these issues which make all this very hard. The finest way would be to use html5, but than you either have to provide two solutions or disable file upload with *limited* browsers.
+
+I do like to have more than one solution to the problem, where the application it self detects when to use which method. I crawled the web and found a pretty interesting project. It is called [Plupload](http://www.plupload.com/), written from the company which also does the [TinyMCE Editor](http://tinymce.moxiecode.com/).
+
+If one uses the *jQuery* queue widget ist a very competitive solution. The only thing is, that you have to specify the target *div* container:
+
+{% highlight javascript %}
+$("#uploader").pluploadQueue({
+  // General settings (enable all engines)
+  runtimes : 'flash,gears,flash,silverlight,browserplus,html5',
+  url : 'upload.php',
+  max_file_size : '10mb',
+  chunk_size : '1mb',
+  unique_names : true,
+  
+  // Resize images on clientside if we can
+  resize : {width : 320, height : 240, quality : 90},
+  
+  // Specify what files to browse for
+  filters : [
+    {title : "Image files", extensions : "jpg,gif,png"},
+    {title : "Zip files", extensions : "zip"}
+  ],
+  
+  // Flash & Silverlight paths settings
+  flash_swf_url : '/plupload/js/plupload.flash.swf',
+  silverlight_xap_url : '/plupload/js/plupload.silverlight.xap',
+});
+{% endhighlight %}
+
+If you don't what to use the *jquery* widget it's simply possible. Just hook into the many events of the Queue.
+
+I wanted to write a ruby *gem* that bundles the functionality but this is accually realy hard, if it should work with every [rack](http://rack.rubyforge.org/) webserver. I was thinking of creating a rack application, that delivers the *javascript* files and is responsible for the file upload. At the moment i have not enough time to realize this, but it sounds like a litte weekend project to me. Maybe i will come around with a working ruby gem next week.
+
+If i would implemented, i would do it like this:
+
+Application:
+
+{% highlight ruby %}
+# setup the path
+Plupload.location = "/upload"
+
+# mount the application using the path
+map Plupload.location do
+  run Plupload::Application.new do |env, files|
+    # do somthing with the files after the upload has finished
+  end
+end
+{% endhighlight %}
+
+View:
+
+{% highlight erb %}
+<html>
+  <head>
+    <!-- ... -->
+    <%= Plupload.include_tag %>
+    <script type="text/javascript" charset="utf-8">
+      // write your handler code here, maybe with help of ruby
+    </script>
+  </head>
+  <body>
+    <!-- ... -->
+  </body>
+</html>
+{% endhighlight %}
+
+What do you thing about the idea? Are there any suggestions?
