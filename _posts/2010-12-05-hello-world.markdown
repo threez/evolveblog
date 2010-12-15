@@ -39,7 +39,7 @@ i faced some major issues:
 
 I decided to not fix the old site generator. I wanted something fresh new
 and compatible with my new work flows. Implementing a full blown application
-stack with [sinatra](www.sinatrarb.com) or [rails](www.rubyonrails.org) 
+stack with [sinatra](www.sinatrarb.com) or [rails](http://www.rubyonrails.org) 
 seemed like a little overkill. So i search for static site generators on google.
 I compared them and found [Jekyll](https://github.com/mojombo/jekyll) to be a 
 perfect fit for my Problem.
@@ -51,7 +51,7 @@ But Jekyll has two issues that it is sharing with my old solution:
 
 Both have a sweet solution. The commenting part can be easily done using
 [disqus](http://disqus.com/). This is a platform for commenting and getting
-feedback from your readers. It has some need features like [openid](openid.net) login and
+feedback from your readers. It has some need features like [openid](http://openid.net) login and
 such. It is very easy to integrate. For me it was just as easy as putting these
 lines at the end of my post:
 
