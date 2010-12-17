@@ -1,10 +1,10 @@
 ---
 layout: post
 title: File Upload using Plupload
-tags: file upload mutliple plupload flash silverlight html
+tags: file upload multiple plupload flash silverlight html
 ---
 
-You may had the same issue in the past. If you want to enable the user to upload multiple files at once there was allways no good solution. Many people have used *Flash*, *Java-Applets* or other techniques to come around this issue. 
+You may had the same issue in the past. If you want to enable the user to upload multiple files at once there was always no good solution. Many people have used *Flash*, *Java-Applets* or other techniques to come around this issue. 
 
 Well at work i have currently the same issue. Uploading one file or multiple files to the server. At the moment i use the *"upload into frame"* method where one can upload the file into a *iframe* to omit leaving the form or web application. 
 
@@ -21,7 +21,7 @@ This technique is very simple. It works on all browsers i know of. Just like thi
 </form>
 {% endhighlight %}
 
-Be sure to also use the *name*, because that is, what is relevant for the *target* attribute. Als long as you have *html5* and / or enough input fields of type file you can upload as many files as you want. But you can't multi-select or drag and drop them. Also you have no indicator of the upload progress. And if you have upload limits (e.g. 10MB) that you have to check it on the server side. There are some workarounds (e.g. ajax poll for upload progress) to these issues which make all this very hard. The finest way would be to use html5, but than you either have to provide two solutions or disable file upload with *limited* browsers.
+Be sure to also use the *iframe name*, because that is the relevant attribute for the *target* attribute. Als long as you have *html5* and / or enough input fields of type file you can upload as many files as you want. But you can't multi-select or drag and drop them. Also you have no indicator of the upload progress. And if you have upload limits (e.g. 10MB) that you have to check it on the server side. There are some workarounds (e.g. ajax poll for upload progress) to these issues which make all this very hard. The finest way would be to use html5, but than you either have to provide two solutions or disable file upload with *limited* browsers.
 
 I do like to have more than one solution to the problem, where the application it self detects when to use which method. I crawled the web and found a pretty interesting project. It is called [Plupload](http://www.plupload.com/), written from the company which also does the [TinyMCE Editor](http://tinymce.moxiecode.com/).
 
