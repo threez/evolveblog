@@ -6,7 +6,7 @@ tags: sharding database ruby datamapper rails
 
 I have recently worked on a project, were i need to shard around multiple databases. The setting was *rails3* with *DataMapper*. Luckily *DataMapper* plays well with multiple repositories out of the box. But during the implementation i faced some caveats. 
 
-First of all lets shortly speak about the architecture and a main use case. In this example we have a master database with a users table and this user table contains the user id, password, etc. Most importantly this db stores the shard that will be used for the user as well. In our case this is just a symbol or name. One important fact is, that the number of shards is unknown to us, which will lead to more flexibility in the operations part. Some examples for rails are about notes and this is no exception. We assume 300 Mio. different users of our application and therefore we shard the notes on different database hosts.
+First of all lets shortly speak about the architecture and a main use cases. In this example we have a master database with a users table and this user table contains the user id, password, etc. Most importantly this db stores the shard that will be used for the user as well. In our case this is just a symbol or name. One important fact is, that the number of shards is unknown to us, which will lead to more flexibility in the operations part. Some examples for rails are about notes and this is no exception. We assume 300 Mio. different users of our application and therefore we shard the notes on different database hosts.
 
 The code we want to write in our *NotesController* should be familiar. We don't want do do any extra work to use a different database. Absolutely this is not a complete example. I just focus on the sharding parts.
 
@@ -18,7 +18,7 @@ class NotesController < ApplicationController
 end
 {% endhighlight %}
 
-Therefore we have to connect or use an existing connection to the shard of the user. I assume that the user is already logged in and and has a session wich has stored the shard location and we can recover a user object using *user_from_session*. If there is a user we can wrap our call in the database repository context of *DataMapper*. But we have to make sure, that the connection to the shard is there therefore we will introduce a simple helper module *Database*.
+Therefore we have to connect or use an existing connection to the shard of the user. I assume that the user is already logged in and and has a session which has stored the shard location and we can recover a user object using *user_from_session*. If there is a user we can wrap our call in the database repository context of *DataMapper*. But we have to make sure, that the connection to the shard is there, therefore we will introduce a simple helper module *Database*.
 
 {% highlight ruby %}
 class ApplicationController < ActionController::Base
@@ -36,7 +36,7 @@ private
 end
 {% endhighlight %}
 
-Okay now *DataMapper* has multiple problems we have to avoid. First of all it assumes to define all definitions like *properties*, *validations*, *relations* in the default repository (wich is in this example the master repo were the user lives in). But the second thing is, that it wants you to specify the name of a storage ahead of time. Since we don't know how many and what stores we have, we have to use a little trick to come around this. We will define de table name using our own custom lookup table *Database::TABLES*. The rest can be simple and normal *DataMapper* stuff. The resulting model class looks like this:
+Okay now *DataMapper* has multiple problems we have to avoid. First of all it assumes to define all definitions like *properties*, *validations*, *relations* in the default repository (which is in this example the master repository were the user lives in). But the second thing is, that it wants you to specify the name of a storage ahead of time. Since we don't know how many and which stores we have, we have to use a little trick to come around this. We will define de table name using our own custom lookup table *Database::TABLES*. The rest can be simple and common *DataMapper* stuff. The resulting model class looks like this:
 
 {% highlight ruby %}
 class Note
@@ -65,7 +65,7 @@ Now we can have a look at the heart of the sharing. It's a simple module that ha
 - only connect once to a shard per rails instance
 - look up the shards connection string
 
-To do the table name trick we use the *resource naming convections* one can attach to an adapter. Since the adapter will be returned after setting up a conection we can simply set the new convention there. Our convention is called *NAMING_CONVENTION* and will use the name of the mapping table is is is defined there otherwise it will fallback to the *DataMapper* defaults convention.
+To do the table name trick we use the *resource naming conventions* one can attach to an adapter. Since the adapter will be returned after setting up a connection we can simply set the new convention there. Our convention is called *NAMING_CONVENTION* and will use the name of the mapping table if it is defined,  otherwise it will fallback to the *DataMapper* defaults convention.
 
 The *url* method takes care of creating the connection string, i have used a template in which the shard name will be passed. But you can use what ever you want to lookup the connection string.
 
