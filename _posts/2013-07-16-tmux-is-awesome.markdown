@@ -69,8 +69,8 @@ require 'securerandom'
 session = ARGV.shift || "#{SecureRandom.hex(2)}"
 system "tmux -2 new-session -d -s #{session}"
 Instance.all do |instance|
-  system "tmux new-window -t #{session}: -n '#{window_name}'" +
-         "'ssh -oStrictHostKeyChecking=no root@#{ip}'"
+  system "tmux new-window -t #{session}: -n '#{instance.name}'" +
+         "'ssh -oStrictHostKeyChecking=no root@#{instance.ip}'"
 end
 exec "tmux -2 attach-session -t #{session}"
 {% endhighlight %}
