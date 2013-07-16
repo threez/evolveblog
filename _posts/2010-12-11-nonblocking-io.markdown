@@ -90,7 +90,7 @@ http.createServer(function (request, response) {
 
 After running the benchmark i get the following results:
 
-<img src="/images/posts/2010-12-11-summary.png" alt="the graphs"/>
+<img src="/images/posts/2010-12-11-summary.png" alt="the graphs">
 
 The results are pretty impressive and didn't meet my expectations. I expected *Ruby 1.9.2* and *NodeJS* to be at eye level and the nonblocking calls to be faster. But in fact the blocking calls are faster and one will get more throughput! The non-blocking calls alternatives are up to 5.5x times slower that the nonblocking calls (*Ruby 1.9.2*). The *NodeJS* is extremely slow at the moment a only 3 requests/s. I expect better results in te future. The *Ruby 1.8.7* beats the *Ruby 1.9.2* when using nonblocking calls. I was wondering why that happens - I have no idea, but i guess that EventMachine is not tuned for it. 
 
@@ -116,4 +116,4 @@ You can find the full source and the results [here](https://github.com/threez/me
 
 These Post is inspired by the blog [ post](http://macournoyer.com/blog/2009/06/04/pusher-and-async-with-thin/) of the *Thin* creator and a talk from [Mike Perham](http://www.mikeperham.com/2010/01/27/scalable-ruby-processing-with-eventmachine/).
 
-<iframe src="http://player.vimeo.com/video/10849958?portrait=0&color=ffffff"  height="300" frameborder="0">.</iframe>
+<iframe src="http://player.vimeo.com/video/10849958?portrait=0" height="300" frameborder="0">.</iframe>
